@@ -123,7 +123,7 @@ static inline int v_sprintf(char *buf, const char *format, va_list args)
  */
 /**@{*/ 
 
-#include<bytebuf.h>
+#include<bytebuf/bytebuf.h>
 
 /**
   * Prints to a ::bytebuf buffer.
