@@ -62,7 +62,7 @@ static int printchar(void **target, const char ttype, int c)
         }
         else if (ttype == PRINT_TTYPE_BYTEBUF){
             buf = *((bytebuf**)target);
-            return bytebuf_cPush(buf, c, BYTEBUF_TOKEN_PRINT);
+            return bytebuf_cPushByte(buf, c, BYTEBUF_TOKEN_PRINT);
         }
         return putchar(c);
 }
