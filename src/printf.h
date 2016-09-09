@@ -102,18 +102,37 @@ int putchar(int c);
 extern int print(void **out, const char ttype, const char *format, va_list args );
 
 /**
-  * Prints to a string.
-  * @param *out Pointer to string / array to write to.
-  * @param format format string and args as documented.
-  * @param args variable list from stdarg.h
-  * @return Number of characters printed.
-  */
+ * Prints to a string. For use by client libraries which intend to provide
+ * printf like interfaces.
+ * 
+ * @param *out Pointer to string / array to write to.
+ * @param format format string and args as documented.
+ * @param args variable list from stdarg.h
+ * @return Number of characters printed.
+ */
 static inline int v_sprintf(char *out, const char *format, va_list args);
 
 static inline int v_sprintf(char *buf, const char *format, va_list args)
 {        
-      return print( (void **)&buf, PRINT_TTYPE_STRING, format, args );
+    return print( (void **)&buf, PRINT_TTYPE_STRING, format, args );
 }
+
+/**
+ * Prints to a string. For direct use, exactly as sprintf.
+ * 
+ * @param *out Pointer to string / array to write to.
+ * @param format format string and args as documented.
+ * @return Number of characters printed.
+ */
+static inline int sprintf(char *out, const char *format, ...){
+    uint8_t rval;
+    va_list args;
+    va_start( args, format );
+    rval = v_sprintf(out, format, args);
+    va_end(args);
+    return rval;
+}
+
 
 /**
  * @name bytebuf Support
@@ -126,17 +145,34 @@ static inline int v_sprintf(char *buf, const char *format, va_list args)
 #include<bytebuf/bytebuf.h>
 
 /**
-  * Prints to a ::bytebuf buffer.
+  * Prints to a ::bytebuf buffer. For use by client libraries which 
+  * intend to provide printf like interfaces.
   * @param *out Pointer to ::bytebuf to write to.
   * @param format format string and args as documented.
   * @param args variable list from stdarg.h
   * @return Number of characters printed.
   */
-static inline int vbprintf(bytebuf *out, const char *format, va_list args);
+static inline int vbprintf(bytebuf *buf, const char *format, va_list args);
 
 static inline int vbprintf(bytebuf *buf, const char *format, va_list args)
 {        
         return print( (void **)&buf, PRINT_TTYPE_BYTEBUF, format, args );
+}
+
+/**
+ * Prints to a ::bytebuf buffer. For direct use, similarly to sprintf.
+ * 
+ * @param *out Pointer to ::bytebuf buffer to write to.
+ * @param format format string and args as documented.
+ * @return Number of characters printed.
+ */
+static inline int bprintf(bytebuf *buf, const char *format, ...){
+    uint8_t rval;
+    va_list args;
+    va_start( args, format );
+    rval = vbprintf(buf, format, args);
+    va_end(args);
+    return rval;
 }
 
 /**@}*/ 
