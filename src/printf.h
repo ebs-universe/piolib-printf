@@ -142,7 +142,7 @@ static inline int sprintf(char *out, const char *format, ...){
  */
 /**@{*/ 
 
-#include<bytebuf/bytebuf.h>
+#include <bytebuf/bytebuf.h>
 
 /**
   * Prints to a ::bytebuf buffer. For use by client libraries which 
