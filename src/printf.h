@@ -93,7 +93,7 @@ int putchar(int c);
   * Declaration of the underlying print implementation. This should not be
   * called directly. The call to this function should usually be inlined by one of
   * the proxy functions. 
-  * @param **out Pointer to the buffer or string to write to.
+  * @param out Pointer to the buffer or string to write to.
   * @param ttype Target type, either PRINT_TTYPE_STRING or PRINT_TTYPE_BYTEBUF.
   * @param format format string and args as documented.
   * @param args variable list from stdarg.h
@@ -105,7 +105,7 @@ extern int print(void **out, const char ttype, const char *format, va_list args 
  * Prints to a string. For use by client libraries which intend to provide
  * printf like interfaces.
  * 
- * @param *out Pointer to string / array to write to.
+ * @param out Pointer to string / array to write to.
  * @param format format string and args as documented.
  * @param args variable list from stdarg.h
  * @return Number of characters printed.
@@ -120,7 +120,7 @@ static inline int v_sprintf(char *buf, const char *format, va_list args)
 /**
  * Prints to a string. For direct use, exactly as sprintf.
  * 
- * @param *out Pointer to string / array to write to.
+ * @param out Pointer to string / array to write to.
  * @param format format string and args as documented.
  * @return Number of characters printed.
  */
@@ -147,7 +147,7 @@ static inline int sprintf(char *out, const char *format, ...){
 /**
   * Prints to a ::bytebuf buffer. For use by client libraries which 
   * intend to provide printf like interfaces.
-  * @param *out Pointer to ::bytebuf to write to.
+  * @param buf Pointer to ::bytebuf to write to.
   * @param format format string and args as documented.
   * @param args variable list from stdarg.h
   * @return Number of characters printed.
@@ -162,7 +162,7 @@ static inline int vbprintf(bytebuf *buf, const char *format, va_list args)
 /**
  * Prints to a ::bytebuf buffer. For direct use, similarly to sprintf.
  * 
- * @param *out Pointer to ::bytebuf buffer to write to.
+ * @param buf Pointer to ::bytebuf buffer to write to.
  * @param format format string and args as documented.
  * @return Number of characters printed.
  */
