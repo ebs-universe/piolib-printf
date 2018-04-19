@@ -30,7 +30,7 @@
  * 
  * The library provides two vprintf-like functions, though not printf
  * itself. 
- *      - vbprintf() : prints to a ::bytebuf, uses bytebuf.h library 
+ *      - vbprintf() : prints to a ::bytebuf, uses ds/bytebuf library 
  *      - vsprintf() : prints to a string
  * 
  * Locking is not implemented here. As long as it is correctly invoked,
@@ -142,7 +142,7 @@ static inline int sprintf(char *out, const char *format, ...){
  */
 /**@{*/ 
 
-#include <bytebuf/bytebuf.h>
+#include <ds/bytebuf.h>
 
 /**
   * Prints to a ::bytebuf buffer. For use by client libraries which 
