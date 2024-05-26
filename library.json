@@ -1,0 +1,23 @@
+{
+    "name": "ebs-printf",
+    "version": "0.1.1",
+    "description": "Minimal printf implementation for embedded systems with ebs bytebuf support",
+    "keywords": "ebs",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ebs-universe/piolib-printf"
+    },
+    "authors": {
+        "name": "Chintalagiri Shashank",
+        "email": "shahshank.chintalagiri@gmail.com",
+        "url": "https://github.com/chintal",
+        "maintainer": true
+    },
+    "license": "LGPL-3.0-or-later",
+    "homepage": "https://github.com/ebs-universe",
+    "frameworks": "*",
+    "platforms": "*",
+    "dependencies": {
+        "chintal/ebs-ds": "^0.1.1"
+    }
+  }
