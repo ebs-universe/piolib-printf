@@ -79,7 +79,14 @@
 #define PRINT_TTYPE_STRING      0
 #define PRINT_TTYPE_BYTEBUF     1
 
-/**@}*/ 
+#ifndef PRINT_SUPPORT_FLOAT
+    #define PRINT_SUPPORT_FLOAT     1
+#endif
+
+#ifndef PRINT_DEFAULT_FLOAT_PRECISION
+    #define PRINT_DEFAULT_FLOAT_PRECISION   6
+#endif
+/**@}*/
 
 /**
   * Declaration of a generic putchar implementation. Not used.

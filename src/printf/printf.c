@@ -1,4 +1,4 @@
-/*
+        /*
     Copyright (c) 
     (c) 2015-2016 Chintalagiri Shashank, Quazar Technologies Pvt.Ltd.
     (c) 2010-2011 Chintalagiri Shashank, Jugnu, IIT Kanpur
@@ -68,7 +68,7 @@ static int printchar(void **target, const char ttype, int c)
 }
 
 #define PAD_RIGHT 1
-#define PAD_ZERO 2
+#define PAD_ZERO  2
 
 static int prints(void **out, const char ttype, const char *string, int width, int pad)
 {
@@ -182,6 +182,56 @@ static int printi(void **out, const char ttype, int i, int b, int sg, int width,
     return pc + prints (out, ttype, s, width, pad);
 }
 
+#pragma GCC push_options 
+#pragma GCC optimize("O0")
+
+static const float pwr10[] = {1e36,  1e33,  1e30,  1e27,  1e24,  1e21,  1e18,
+                              1e15,  1e12,  1e9,   1e6,   1e3,   1e0,   1e-3,
+                              1e-6,  1e-9,  1e-12, 1e-15, 1e-18, 1e-21, 1e-24,
+                              1e-27, 1e-30, 1e-33, 1e-36};
+
+static int printfloat(void **out, const char ttype, double f, int width, int pad, int precision) {
+    // See https://stackoverflow.com/a/77372106/1934174 
+    register int neg = 0, pc = 0, p = 0;
+    register uint32_t digits, fraction, exponent;
+    float mantissa;
+
+    if (f < 0) {
+        f = -f;
+        neg = 1;
+    }   
+
+    if (f == 0) {
+        p = 12;
+    } else {
+        for (p = 0; p < sizeof(pwr10) / sizeof(pwr10[0]) - 1; p++) {
+            if (f >= pwr10[p]) break;
+        }
+    }
+        
+    exponent = 36 - 3 * p;
+    mantissa = f / pwr10[p];
+
+    mantissa += 0.00005; // 4 digit precision
+    digits = mantissa;
+    fraction = (mantissa - digits) * 10000.0; 
+    
+    if (neg){
+        pc += printchar(out, ttype, '-');
+    }
+    pc += printi(out, ttype, digits, 10, 1, 0, 0, 'a');
+    pc += printchar(out, ttype, '.');
+    pc += printi(out, ttype, fraction, 10, 1, 4, PAD_ZERO, 'a');
+    if (exponent){
+        pc += printchar(out, ttype, 'e');
+        pc += printi(out, ttype, exponent, 10, 1, 0, 0, 'a');
+    }
+    return pc;
+}
+
+#pragma GCC pop_options 
+
+
 int print(void **out, const char ttype, const char *format, va_list args )
 {
     register int width, pad;
@@ -193,6 +243,9 @@ int print(void **out, const char ttype, const char *format, va_list args )
         if (*format == '%') {
             ++format;
             width = pad = 0;
+            #if PRINT_SUPPORT_FLOAT
+            int precision = -1;
+            #endif
             if (*format == '\0') break;
             if (*format == '%') goto out;
             if (*format == '-') {
@@ -207,10 +260,28 @@ int print(void **out, const char ttype, const char *format, va_list args )
                 width *= 10;
                 width += *format - '0';
             }
+            #if PRINT_SUPPORT_FLOAT
+            if (*format == '.') {
+                ++format;
+                precision = 0;
+                for (; *format >= '0' && *format <= '9'; ++format) {
+                    precision *= 10;
+                    precision += *format - '0';
+                }
+            }
+            #endif
             if( *format == 'l' ) {
                 lng=1;
                 ++format;
             }
+            #if PRINT_SUPPORT_FLOAT
+            if (*format == 'f') {
+                double fval = va_arg(args, double);
+                if (precision == -1) precision = PRINT_DEFAULT_FLOAT_PRECISION;
+                pc += printfloat(out, ttype, fval, width, pad, precision);
+                continue;
+            }
+            #endif
             if( *format == 's' ) {
                 register char *s = (char *)va_arg( args, int );
                 pc += prints (out, ttype, s?s:"(null)", width, pad);
@@ -248,7 +319,7 @@ int print(void **out, const char ttype, const char *format, va_list args )
                 pc += printchar (out, ttype, *format);
         }
     }
-    if (ttype == PRINT_TTYPE_STRING){
+    if (ttype == PRINT_TTYPE_STRING){   
         outp = (char **) out;
         **outp = '\0';
     }
