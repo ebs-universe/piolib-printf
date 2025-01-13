@@ -84,7 +84,7 @@
 #endif
 
 #ifndef PRINT_DEFAULT_FLOAT_PRECISION
-    #define PRINT_DEFAULT_FLOAT_PRECISION   6
+    #define PRINT_DEFAULT_FLOAT_PRECISION   4
 #endif
 /**@}*/
 

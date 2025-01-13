@@ -34,6 +34,7 @@
 * @see printf.h
 */
 
+#include <math.h>
 #include "printf.h"
 
 /* 
@@ -182,55 +183,58 @@ static int printi(void **out, const char ttype, int i, int b, int sg, int width,
     return pc + prints (out, ttype, s, width, pad);
 }
 
-#pragma GCC push_options 
-#pragma GCC optimize("O0")
-
-static const float pwr10[] = {1e36,  1e33,  1e30,  1e27,  1e24,  1e21,  1e18,
-                              1e15,  1e12,  1e9,   1e6,   1e3,   1e0,   1e-3,
-                              1e-6,  1e-9,  1e-12, 1e-15, 1e-18, 1e-21, 1e-24,
-                              1e-27, 1e-30, 1e-33, 1e-36};
-
 static int printfloat(void **out, const char ttype, double f, int width, int pad, int precision) {
-    // See https://stackoverflow.com/a/77372106/1934174 
-    register int neg = 0, pc = 0, p = 0;
-    register uint32_t digits, fraction, exponent;
-    float mantissa;
+    register int neg = 0, pc = 0;
+    int exponent = 0;
+    double mantissa;
 
     if (f < 0) {
         f = -f;
         neg = 1;
     }   
 
-    if (f == 0) {
-        p = 12;
+    if (f == 0.0) {
+        mantissa = 0.0;
+        exponent = 0;
     } else {
-        for (p = 0; p < sizeof(pwr10) / sizeof(pwr10[0]) - 1; p++) {
-            if (f >= pwr10[p]) break;
+        // Normalize the number to scientific notation (1.0 <= mantissa < 10.0)
+        mantissa = f;
+        while (mantissa >= 10.0) {
+            mantissa /= 10.0;
+            exponent ++;
+        }
+        while (mantissa >= 0.0  && mantissa < 1.0) {
+            mantissa *= 10.0;
+            exponent --;
         }
     }
-        
-    exponent = 36 - 3 * p;
-    mantissa = f / pwr10[p];
-
-    mantissa += 0.00005; // 4 digit precision
-    digits = mantissa;
-    fraction = (mantissa - digits) * 10000.0; 
     
+    // Apply rounding based on precision
+    double scale = pow(10.0, precision);
+    mantissa = round(mantissa * scale) / scale;
+
+    uint64_t digits = (uint64_t)mantissa;
+    uint64_t fraction = (uint64_t)((mantissa - digits) * scale);
+
+    // Output the sign
     if (neg){
         pc += printchar(out, ttype, '-');
     }
+    
+    // Output the integer part
     pc += printi(out, ttype, digits, 10, 1, 0, 0, 'a');
+    
+    // Output the fractional part
     pc += printchar(out, ttype, '.');
-    pc += printi(out, ttype, fraction, 10, 1, 4, PAD_ZERO, 'a');
+    pc += printi(out, ttype, fraction, 10, 0, precision, PAD_ZERO, 'a');
+    
+    // Output the exponent if necessary
     if (exponent){
         pc += printchar(out, ttype, 'e');
         pc += printi(out, ttype, exponent, 10, 1, 0, 0, 'a');
     }
     return pc;
 }
-
-#pragma GCC pop_options 
-
 
 int print(void **out, const char ttype, const char *format, va_list args )
 {
