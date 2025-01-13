@@ -27,7 +27,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">ebs-printf<span id="projectnumber">&#160;0.3.0</span>
+   <div id="projectname">ebs-printf<span id="projectnumber">&#160;0.3.1</span>
    </div>
    <div id="projectbrief">Minimal printf implementation for embedded systems with ebs bytebuf support</div>
   </td>
@@ -137,7 +137,7 @@ $(document).ready(function(){initNavTree('printf_8h_source.html',''); initResiza
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="preprocessor">#ifndef PRINT_DEFAULT_FLOAT_PRECISION</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="printf_8h.html#a1da3a10ec628d326dddda42314bd42e0">   87</a></span><span class="preprocessor">    #define PRINT_DEFAULT_FLOAT_PRECISION   6</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="printf_8h.html#a1da3a10ec628d326dddda42314bd42e0">   87</a></span><span class="preprocessor">    #define PRINT_DEFAULT_FLOAT_PRECISION   4</span></div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="keywordtype">int</span> <a class="code hl_function" href="printf_8h.html#af4de2514b7778805db3815e8dd6cf09a">putchar</a>(<span class="keywordtype">int</span> c);</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
@@ -189,11 +189,11 @@ $(document).ready(function(){initNavTree('printf_8h_source.html',''); initResiza
 <div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
 <div class="ttc" id="aprintf_8h_html_a014f72d1eb635d44f4547d6153c9afd1"><div class="ttname"><a href="printf_8h.html#a014f72d1eb635d44f4547d6153c9afd1">sprintf</a></div><div class="ttdeci">static int sprintf(char *out, const char *format,...)</div><div class="ttdef"><b>Definition</b> <a href="printf_8h_source.html#l00134">printf.h:134</a></div></div>
 <div class="ttc" id="aprintf_8h_html_a30e09ab10214b5e9b93f4c765f373649"><div class="ttname"><a href="printf_8h.html#a30e09ab10214b5e9b93f4c765f373649">bprintf</a></div><div class="ttdeci">static int bprintf(bytebuf *buf, const char *format,...)</div><div class="ttdef"><b>Definition</b> <a href="printf_8h_source.html#l00176">printf.h:176</a></div></div>
-<div class="ttc" id="aprintf_8h_html_a5b328a8f32f082a641944307c97f9a34"><div class="ttname"><a href="printf_8h.html#a5b328a8f32f082a641944307c97f9a34">print</a></div><div class="ttdeci">int print(void **out, const char ttype, const char *format, va_list args)</div><div class="ttdef"><b>Definition</b> <a href="printf_8c_source.html#l00235">printf.c:235</a></div></div>
+<div class="ttc" id="aprintf_8h_html_a5b328a8f32f082a641944307c97f9a34"><div class="ttname"><a href="printf_8h.html#a5b328a8f32f082a641944307c97f9a34">print</a></div><div class="ttdeci">int print(void **out, const char ttype, const char *format, va_list args)</div><div class="ttdef"><b>Definition</b> <a href="printf_8c_source.html#l00239">printf.c:239</a></div></div>
 <div class="ttc" id="aprintf_8h_html_a65fa2c2b1fdeb49ee1d35b47be733d17"><div class="ttname"><a href="printf_8h.html#a65fa2c2b1fdeb49ee1d35b47be733d17">vbprintf</a></div><div class="ttdeci">static int vbprintf(bytebuf *buf, const char *format, va_list args)</div><div class="ttdef"><b>Definition</b> <a href="printf_8h_source.html#l00164">printf.h:164</a></div></div>
 <div class="ttc" id="aprintf_8h_html_a66da8ccc08dfc80beb3b662cc0e70f79"><div class="ttname"><a href="printf_8h.html#a66da8ccc08dfc80beb3b662cc0e70f79">PRINT_TTYPE_BYTEBUF</a></div><div class="ttdeci">#define PRINT_TTYPE_BYTEBUF</div><div class="ttdef"><b>Definition</b> <a href="printf_8h_source.html#l00080">printf.h:80</a></div></div>
 <div class="ttc" id="aprintf_8h_html_a89206cd7a5ee84d4340e223078709043"><div class="ttname"><a href="printf_8h.html#a89206cd7a5ee84d4340e223078709043">v_sprintf</a></div><div class="ttdeci">static int v_sprintf(char *out, const char *format, va_list args)</div><div class="ttdef"><b>Definition</b> <a href="printf_8h_source.html#l00122">printf.h:122</a></div></div>
-<div class="ttc" id="aprintf_8h_html_af4de2514b7778805db3815e8dd6cf09a"><div class="ttname"><a href="printf_8h.html#af4de2514b7778805db3815e8dd6cf09a">putchar</a></div><div class="ttdeci">int putchar(int c)</div><div class="ttdef"><b>Definition</b> <a href="printf_8c_source.html#l00047">printf.c:47</a></div></div>
+<div class="ttc" id="aprintf_8h_html_af4de2514b7778805db3815e8dd6cf09a"><div class="ttname"><a href="printf_8h.html#af4de2514b7778805db3815e8dd6cf09a">putchar</a></div><div class="ttdeci">int putchar(int c)</div><div class="ttdef"><b>Definition</b> <a href="printf_8c_source.html#l00048">printf.c:48</a></div></div>
 <div class="ttc" id="aprintf_8h_html_afca46952b53abba1a6c1c0e8843dcde7"><div class="ttname"><a href="printf_8h.html#afca46952b53abba1a6c1c0e8843dcde7">PRINT_TTYPE_STRING</a></div><div class="ttdeci">#define PRINT_TTYPE_STRING</div><div class="ttdef"><b>Definition</b> <a href="printf_8h_source.html#l00079">printf.h:79</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -201,7 +201,7 @@ $(document).ready(function(){initNavTree('printf_8h_source.html',''); initResiza
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_012ec66c173e5cefcc171f0e37014eef.html">printf</a></li><li class="navelem"><a class="el" href="printf_8h.html">printf.h</a></li>
-    <li class="footer">Generated on Sun Jan 12 2025 15:18:55 for ebs-printf by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Mon Jan 13 2025 07:14:11 for ebs-printf by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
