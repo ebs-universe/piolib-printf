@@ -1,6 +1,6 @@
 {
     "name": "ebs-printf",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "description": "Minimal printf implementation for embedded systems with ebs bytebuf support",
     "keywords": "ebs",
     "repository": {
@@ -20,8 +20,7 @@
     "dependencies": [
         { 
             "owner": "chintal",
-            "name": "ebs-ds",
-            "version": "^0.2.0"
+            "name": "ebs-ds"
         }
     ]
   }
