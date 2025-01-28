@@ -27,7 +27,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">ebs-printf<span id="projectnumber">&#160;0.3.2</span>
+   <div id="projectname">ebs-printf<span id="projectnumber">&#160;0.3.3</span>
    </div>
    <div id="projectbrief">Minimal printf implementation for embedded systems with ebs bytebuf support</div>
   </td>
@@ -136,8 +136,8 @@ Functions</h2></td></tr>
 <tr class="separator:af4de2514b7778805db3815e8dd6cf09a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b328a8f32f082a641944307c97f9a34" id="r_a5b328a8f32f082a641944307c97f9a34"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="printf_8h.html#a5b328a8f32f082a641944307c97f9a34">print</a> (void **out, const char ttype, const char *format, va_list args)</td></tr>
 <tr class="separator:a5b328a8f32f082a641944307c97f9a34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89206cd7a5ee84d4340e223078709043" id="r_a89206cd7a5ee84d4340e223078709043"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="printf_8h.html#a89206cd7a5ee84d4340e223078709043">v_sprintf</a> (char *out, const char *format, va_list args)</td></tr>
-<tr class="separator:a89206cd7a5ee84d4340e223078709043"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a984687e0cb1dfa69b33161177d270337" id="r_a984687e0cb1dfa69b33161177d270337"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="printf_8h.html#a984687e0cb1dfa69b33161177d270337">vsprintf</a> (char *out, const char *format, va_list args)</td></tr>
+<tr class="separator:a984687e0cb1dfa69b33161177d270337"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a014f72d1eb635d44f4547d6153c9afd1" id="r_a014f72d1eb635d44f4547d6153c9afd1"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="printf_8h.html#a014f72d1eb635d44f4547d6153c9afd1">sprintf</a> (char *out, const char *format,...)</td></tr>
 <tr class="separator:a014f72d1eb635d44f4547d6153c9afd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">bytebuf Support</div></td></tr>
@@ -153,7 +153,7 @@ Functions</h2></td></tr>
 <p>This printf implementation can be used for embedded applications in small embedded systems. As far as possible, the implementation is pared down to the minimum required to retain core functionality.</p>
 <p>The library provides two vprintf-like functions, though not printf itself.</p><ul>
 <li><a class="el" href="printf_8h.html#a65fa2c2b1fdeb49ee1d35b47be733d17">vbprintf()</a> : prints to a ::bytebuf, uses ds/bytebuf library</li>
-<li>vsprintf() : prints to a string</li>
+<li><a class="el" href="printf_8h.html#a984687e0cb1dfa69b33161177d270337">vsprintf()</a> : prints to a string</li>
 </ul>
 <p>Locking is not implemented here. As long as it is correctly invoked, <a class="el" href="printf_8h.html#a65fa2c2b1fdeb49ee1d35b47be733d17">vbprintf()</a> inherits the locking mechanism of bytebuf.h and no more. Besides this, the functions should be sufficiently thread safe as long as the write targets are separate. This has not been tested.</p>
 <p>Due to the fairly heavy usage of the stack during execution, this library should be used with care, and sparingly.</p>
@@ -311,7 +311,7 @@ Functions</h2></td></tr>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="printf_8h_a30e09ab10214b5e9b93f4c765f373649_cgraph.svg" width="100%" height="464"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="printf_8h_a30e09ab10214b5e9b93f4c765f373649_cgraph.svg" width="100%" height="502"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -372,20 +372,20 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Number of characters printed. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="printf_8c_source.html#l00239">239</a> of file <a class="el" href="printf_8c_source.html">printf.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="printf_8c_source.html#l00270">270</a> of file <a class="el" href="printf_8c_source.html">printf.c</a>.</p>
 
-<p class="reference">References <a class="el" href="printf_8c_source.html#l00071">PAD_RIGHT</a>, <a class="el" href="printf_8c_source.html#l00072">PAD_ZERO</a>, <a class="el" href="printf_8h_source.html#l00087">PRINT_DEFAULT_FLOAT_PRECISION</a>, <a class="el" href="printf_8h_source.html#l00079">PRINT_TTYPE_STRING</a>, <a class="el" href="printf_8c_source.html#l00052">printchar()</a>, <a class="el" href="printf_8c_source.html#l00186">printfloat()</a>, <a class="el" href="printf_8c_source.html#l00144">printi()</a>, <a class="el" href="printf_8c_source.html#l00102">printl()</a>, and <a class="el" href="printf_8c_source.html#l00074">prints()</a>.</p>
+<p class="reference">References <a class="el" href="printf_8c_source.html#l00071">PAD_RIGHT</a>, <a class="el" href="printf_8c_source.html#l00072">PAD_ZERO</a>, <a class="el" href="printf_8h_source.html#l00087">PRINT_DEFAULT_FLOAT_PRECISION</a>, <a class="el" href="printf_8h_source.html#l00079">PRINT_TTYPE_STRING</a>, <a class="el" href="printf_8c_source.html#l00052">printchar()</a>, <a class="el" href="printf_8c_source.html#l00189">printfloat()</a>, <a class="el" href="printf_8c_source.html#l00152">printi()</a>, <a class="el" href="printf_8c_source.html#l00116">printl()</a>, and <a class="el" href="printf_8c_source.html#l00074">prints()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="printf_8h_source.html#l00122">v_sprintf()</a>, and <a class="el" href="printf_8h_source.html#l00164">vbprintf()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="printf_8h_source.html#l00164">vbprintf()</a>, and <a class="el" href="printf_8h_source.html#l00122">vsprintf()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="printf_8h_a5b328a8f32f082a641944307c97f9a34_cgraph.svg" width="650" height="219"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="printf_8h_a5b328a8f32f082a641944307c97f9a34_cgraph.svg" width="100%" height="502"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="printf_8h_a5b328a8f32f082a641944307c97f9a34_icgraph.svg" width="303" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="printf_8h_a5b328a8f32f082a641944307c97f9a34_icgraph.svg" width="298" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -419,7 +419,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="printf_8h_af4de2514b7778805db3815e8dd6cf09a_icgraph.svg" width="100%" height="464"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="printf_8h_af4de2514b7778805db3815e8dd6cf09a_icgraph.svg" width="100%" height="493"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -475,79 +475,11 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="printf_8h_source.html#l00134">134</a> of file <a class="el" href="printf_8h_source.html">printf.h</a>.</p>
 
-<p class="reference">References <a class="el" href="printf_8h_source.html#l00122">v_sprintf()</a>.</p>
+<p class="reference">References <a class="el" href="printf_8h_source.html#l00122">vsprintf()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="printf_8h_a014f72d1eb635d44f4547d6153c9afd1_cgraph.svg" width="100%" height="464"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-
-</div>
-</div>
-<a id="a89206cd7a5ee84d4340e223078709043" name="a89206cd7a5ee84d4340e223078709043"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a89206cd7a5ee84d4340e223078709043">&#9670;&#160;</a></span>v_sprintf()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static int v_sprintf </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>format</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">va_list&#160;</td>
-          <td class="paramname"><em>args</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Prints to a string. For use by client libraries which intend to provide printf like interfaces.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">out</td><td>Pointer to string / array to write to. </td></tr>
-    <tr><td class="paramname">format</td><td>format string and args as documented. </td></tr>
-    <tr><td class="paramname">args</td><td>variable list from stdarg.h </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Number of characters printed. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="printf_8h_source.html#l00122">122</a> of file <a class="el" href="printf_8h_source.html">printf.h</a>.</p>
-
-<p class="reference">References <a class="el" href="printf_8c_source.html#l00239">print()</a>, and <a class="el" href="printf_8h_source.html#l00079">PRINT_TTYPE_STRING</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="printf_8h_source.html#l00134">sprintf()</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="printf_8h_a89206cd7a5ee84d4340e223078709043_cgraph.svg" width="100%" height="464"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="printf_8h_a89206cd7a5ee84d4340e223078709043_icgraph.svg" width="202" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="printf_8h_a014f72d1eb635d44f4547d6153c9afd1_cgraph.svg" width="100%" height="502"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -603,18 +535,86 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="printf_8h_source.html#l00164">164</a> of file <a class="el" href="printf_8h_source.html">printf.h</a>.</p>
 
-<p class="reference">References <a class="el" href="printf_8c_source.html#l00239">print()</a>, and <a class="el" href="printf_8h_source.html#l00080">PRINT_TTYPE_BYTEBUF</a>.</p>
+<p class="reference">References <a class="el" href="printf_8c_source.html#l00270">print()</a>, and <a class="el" href="printf_8h_source.html#l00080">PRINT_TTYPE_BYTEBUF</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="printf_8h_source.html#l00176">bprintf()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="printf_8h_a65fa2c2b1fdeb49ee1d35b47be733d17_cgraph.svg" width="100%" height="464"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="printf_8h_a65fa2c2b1fdeb49ee1d35b47be733d17_cgraph.svg" width="100%" height="502"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="printf_8h_a65fa2c2b1fdeb49ee1d35b47be733d17_icgraph.svg" width="198" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a984687e0cb1dfa69b33161177d270337" name="a984687e0cb1dfa69b33161177d270337"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a984687e0cb1dfa69b33161177d270337">&#9670;&#160;</a></span>vsprintf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int vsprintf </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">va_list&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Prints to a string. For use by client libraries which intend to provide printf like interfaces.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">out</td><td>Pointer to string / array to write to. </td></tr>
+    <tr><td class="paramname">format</td><td>format string and args as documented. </td></tr>
+    <tr><td class="paramname">args</td><td>variable list from stdarg.h </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of characters printed. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="printf_8h_source.html#l00122">122</a> of file <a class="el" href="printf_8h_source.html">printf.h</a>.</p>
+
+<p class="reference">References <a class="el" href="printf_8c_source.html#l00270">print()</a>, and <a class="el" href="printf_8h_source.html#l00079">PRINT_TTYPE_STRING</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="printf_8h_source.html#l00134">sprintf()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="printf_8h_a984687e0cb1dfa69b33161177d270337_cgraph.svg" width="100%" height="502"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="printf_8h_a984687e0cb1dfa69b33161177d270337_icgraph.svg" width="195" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -625,7 +625,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_012ec66c173e5cefcc171f0e37014eef.html">printf</a></li><li class="navelem"><a class="el" href="printf_8h.html">printf.h</a></li>
-    <li class="footer">Generated on Thu Jan 16 2025 20:51:00 for ebs-printf by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Tue Jan 28 2025 10:13:09 for ebs-printf by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

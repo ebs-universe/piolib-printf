@@ -10,11 +10,11 @@ digraph "printl"
   Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node2 [id="Node000002",label="print",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$printf_8c.html#a5b328a8f32f082a641944307c97f9a34",tooltip=" "];
   Node2 -> Node3 [id="edge2_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node3 [id="Node000003",label="v_sprintf",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$printf_8h.html#a89206cd7a5ee84d4340e223078709043",tooltip=" "];
+  Node3 [id="Node000003",label="vbprintf",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$printf_8h.html#a65fa2c2b1fdeb49ee1d35b47be733d17",tooltip=" "];
   Node3 -> Node4 [id="edge3_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node4 [id="Node000004",label="sprintf",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$printf_8h.html#a014f72d1eb635d44f4547d6153c9afd1",tooltip=" "];
+  Node4 [id="Node000004",label="bprintf",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$printf_8h.html#a30e09ab10214b5e9b93f4c765f373649",tooltip=" "];
   Node2 -> Node5 [id="edge4_Node000002_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node5 [id="Node000005",label="vbprintf",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$printf_8h.html#a65fa2c2b1fdeb49ee1d35b47be733d17",tooltip=" "];
+  Node5 [id="Node000005",label="vsprintf",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$printf_8h.html#a984687e0cb1dfa69b33161177d270337",tooltip=" "];
   Node5 -> Node6 [id="edge5_Node000005_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node6 [id="Node000006",label="bprintf",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$printf_8h.html#a30e09ab10214b5e9b93f4c765f373649",tooltip=" "];
+  Node6 [id="Node000006",label="sprintf",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$printf_8h.html#a014f72d1eb635d44f4547d6153c9afd1",tooltip=" "];
 }

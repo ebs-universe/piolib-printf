@@ -2,6 +2,7 @@ var printf_8c =
 [
     [ "PAD_RIGHT", "printf_8c.html#a6fd5dddc97219412ab1c4483ce144aef", null ],
     [ "PAD_ZERO", "printf_8c.html#a0b08e2c1689b9348d321cdc8846950af", null ],
+    [ "_write_number", "printf_8c.html#a81ec43c10454c3c5036f9876f067d219", null ],
     [ "print", "printf_8c.html#a5b328a8f32f082a641944307c97f9a34", null ],
     [ "printchar", "printf_8c.html#a467a00da8c720b8dddc7088e2805291c", null ],
     [ "printfloat", "printf_8c.html#a2c37f08c54b3dc54d13030c62cba67a7", null ],
