@@ -49,7 +49,7 @@ int putchar ( int c ) {
     return 1;
 }
 
-static int printchar(void **target, const char ttype, int c)
+static int printchar(void **target, const printf_ttype_t ttype, int c)
 {
     extern int putchar(int c);
         char **str;
@@ -71,7 +71,7 @@ static int printchar(void **target, const char ttype, int c)
 #define PAD_RIGHT 1
 #define PAD_ZERO  2
 
-static int prints(void **out, const char ttype, const char *string, int width, int pad)
+static int prints(void **out, const printf_ttype_t ttype, const char *string, int width, int pad)
 {
     register int pc = 0, padchar = ' ';
 
@@ -113,7 +113,7 @@ static inline uint8_t _write_number(char ** s, int u, int b, int letbase){
     return len;
 }
 
-static int printl(void **out, const char ttype, long i, int b, int sg, int width, int pad, int letbase)
+static int printl(void **out, const printf_ttype_t ttype, long i, int b, int sg, int width, int pad, int letbase)
 {
     char print_buf[PRINT_BUF_LEN];
     char *s;
@@ -149,7 +149,7 @@ static int printl(void **out, const char ttype, long i, int b, int sg, int width
     return pc + prints (out, ttype, s, width, pad);
 }
 
-static int printi(void **out, const char ttype, int i, int b, int sg, int width, int pad, int letbase)
+static int printi(void **out, const printf_ttype_t ttype, int i, int b, int sg, int width, int pad, int letbase)
 {
     char print_buf[PRINT_BUF_LEN];
     char *s;
@@ -186,13 +186,12 @@ static int printi(void **out, const char ttype, int i, int b, int sg, int width,
 }
 
 #if PRINT_SUPPORT_FLOAT
-static int printfloat(void **out, const char ttype, double f, int width, int pad, int precision) {
+static int printfloat(void **out, const printf_ttype_t ttype, float f, int width, int pad, int precision) {
     char print_buf[PRINT_BUF_LEN], localbuf[4];
     char * s;
     char * sl;
     register uint8_t neg = 0, pc = 0, l8 = 0;
     int8_t exponent = 0;
-    double mantissa;
 
     if (f < 0) {
         f = -f;
@@ -200,27 +199,30 @@ static int printfloat(void **out, const char ttype, double f, int width, int pad
     }   
 
     if (f == 0.0) {
-        mantissa = 0.0;
         exponent = 0;
     } else {
         // Normalize the number to scientific notation (1.0 <= mantissa < 10.0)
-        mantissa = f;
-        while (mantissa >= 10.0) {
-            mantissa /= 10.0;
+        while (f >= 10.0) {
+            f /= 10.0;
             exponent ++;
         }
-        while (mantissa < 1.0) {
-            mantissa *= 10.0;
+        while (f < 1.0) {
+            f *= 10.0;
             exponent --;
         }
     }
     
     // Apply rounding based on precision
-    double scale = pow(10.0, precision);
-    mantissa = round(mantissa * scale) / scale;
+    int scale = 1;
+    for (l8 = 0; l8 < precision; l8++){
+        scale *= 10;
+    }
 
-    uint64_t digits = (uint64_t)mantissa;
-    uint64_t fraction = (uint64_t)((mantissa - digits) * scale);
+    // This is useful, but very expensive.
+    // mantissa = round(mantissa * scale) / scale;
+
+    uint32_t digits = (uint32_t)f;
+    uint32_t fraction = (uint32_t)((f - digits) * scale);
 
     s = print_buf + PRINT_BUF_LEN-1;
     *s = '\0';
@@ -267,7 +269,7 @@ static int printfloat(void **out, const char ttype, double f, int width, int pad
 }
 #endif
 
-int print(void **out, const char ttype, const char *format, va_list args )
+int print(void **out, const printf_ttype_t ttype, const char *format, va_list args )
 {
     register int width, pad;
     register int pc = 0;

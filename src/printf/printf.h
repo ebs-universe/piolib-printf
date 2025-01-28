@@ -64,29 +64,14 @@
  * @see printf.c
  */
 
-#include<stdarg.h>
-#include<stdint.h>
+#include <stdarg.h>
+#include <stdint.h>
+#include "config.h"
 
-/**
- * @name Definitions for internal printf.c use
- */
-/**@{*/ 
-
-/* Length of internal buffers for sting construction. 
- * It should be enough for 32 bit int */
-#define PRINT_BUF_LEN           20
-
-#define PRINT_TTYPE_STRING      0
-#define PRINT_TTYPE_BYTEBUF     1
-
-#ifndef PRINT_SUPPORT_FLOAT
-    #define PRINT_SUPPORT_FLOAT     1
-#endif
-
-#ifndef PRINT_DEFAULT_FLOAT_PRECISION
-    #define PRINT_DEFAULT_FLOAT_PRECISION   4
-#endif
-/**@}*/
+typedef enum {
+    PRINT_TTYPE_STRING = 0,
+    PRINT_TTYPE_BYTEBUF = 1,
+} printf_ttype_t;
 
 /**
   * Declaration of a generic putchar implementation. Not used.
@@ -106,7 +91,7 @@ int putchar(int c);
   * @param args variable list from stdarg.h
   * @return Number of characters printed.
   */
-extern int print(void **out, const char ttype, const char *format, va_list args );
+extern int print(void **out, const printf_ttype_t ttype, const char *format, va_list args );
 
 /**
  * Prints to a string. For use by client libraries which intend to provide
