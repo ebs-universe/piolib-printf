@@ -27,7 +27,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">ebs-printf<span id="projectnumber">&#160;0.3.3</span>
+   <div id="projectname">ebs-printf<span id="projectnumber">&#160;0.3.4</span>
    </div>
    <div id="projectbrief">Minimal printf implementation for embedded systems with ebs bytebuf support</div>
   </td>
@@ -93,6 +93,7 @@ $(document).ready(function(){initNavTree('printf_8h.html',''); initResizable(); 
 
 <div class="header">
   <div class="summary">
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">printf.h File Reference</div></div>
 </div><!--header-->
@@ -102,11 +103,12 @@ $(document).ready(function(){initNavTree('printf_8h.html',''); initResizable(); 
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdarg.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="config_8h_source.html">config.h</a>&quot;</code><br />
 <code>#include &lt;ds/bytebuf.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for printf.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="printf_8h__incl.svg" width="308" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="printf_8h__incl.svg" width="406" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -116,26 +118,19 @@ This graph shows which files directly or indirectly include this file:</div>
 </div>
 <p><a href="printf_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr><td colspan="2"><div class="groupHeader">Definitions for internal printf.c use</div></td></tr>
-<tr class="memitem:a5bf270eda1fe4ed63535e31fab16433e" id="r_a5bf270eda1fe4ed63535e31fab16433e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="printf_8h.html#a5bf270eda1fe4ed63535e31fab16433e">PRINT_BUF_LEN</a>&#160;&#160;&#160;20</td></tr>
-<tr class="separator:a5bf270eda1fe4ed63535e31fab16433e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afca46952b53abba1a6c1c0e8843dcde7" id="r_afca46952b53abba1a6c1c0e8843dcde7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="printf_8h.html#afca46952b53abba1a6c1c0e8843dcde7">PRINT_TTYPE_STRING</a>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:afca46952b53abba1a6c1c0e8843dcde7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66da8ccc08dfc80beb3b662cc0e70f79" id="r_a66da8ccc08dfc80beb3b662cc0e70f79"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="printf_8h.html#a66da8ccc08dfc80beb3b662cc0e70f79">PRINT_TTYPE_BYTEBUF</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:a66da8ccc08dfc80beb3b662cc0e70f79"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae56eb2aa7ca696a3fb7edf07b05661f4" id="r_ae56eb2aa7ca696a3fb7edf07b05661f4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="printf_8h.html#ae56eb2aa7ca696a3fb7edf07b05661f4">PRINT_SUPPORT_FLOAT</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:ae56eb2aa7ca696a3fb7edf07b05661f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1da3a10ec628d326dddda42314bd42e0" id="r_a1da3a10ec628d326dddda42314bd42e0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="printf_8h.html#a1da3a10ec628d326dddda42314bd42e0">PRINT_DEFAULT_FLOAT_PRECISION</a>&#160;&#160;&#160;4</td></tr>
-<tr class="separator:a1da3a10ec628d326dddda42314bd42e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a41cd624a0b9013e5cd7ab12430997b02" id="r_a41cd624a0b9013e5cd7ab12430997b02"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="printf_8h.html#a41cd624a0b9013e5cd7ab12430997b02">printf_ttype_t</a> { <a class="el" href="printf_8h.html#a41cd624a0b9013e5cd7ab12430997b02a152776021aa6568da185d3bd929adce0">PRINT_TTYPE_STRING</a> = 0
+, <a class="el" href="printf_8h.html#a41cd624a0b9013e5cd7ab12430997b02a1a3df25bb661458ee8e8414bff277d93">PRINT_TTYPE_BYTEBUF</a> = 1
+ }</td></tr>
+<tr class="separator:a41cd624a0b9013e5cd7ab12430997b02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:af4de2514b7778805db3815e8dd6cf09a" id="r_af4de2514b7778805db3815e8dd6cf09a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="printf_8h.html#af4de2514b7778805db3815e8dd6cf09a">putchar</a> (int c)</td></tr>
 <tr class="separator:af4de2514b7778805db3815e8dd6cf09a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b328a8f32f082a641944307c97f9a34" id="r_a5b328a8f32f082a641944307c97f9a34"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="printf_8h.html#a5b328a8f32f082a641944307c97f9a34">print</a> (void **out, const char ttype, const char *format, va_list args)</td></tr>
-<tr class="separator:a5b328a8f32f082a641944307c97f9a34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0585acb8fbf31a90ffbf65ba543abe1" id="r_aa0585acb8fbf31a90ffbf65ba543abe1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="printf_8h.html#aa0585acb8fbf31a90ffbf65ba543abe1">print</a> (void **out, const <a class="el" href="printf_8h.html#a41cd624a0b9013e5cd7ab12430997b02">printf_ttype_t</a> ttype, const char *format, va_list args)</td></tr>
+<tr class="separator:aa0585acb8fbf31a90ffbf65ba543abe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a984687e0cb1dfa69b33161177d270337" id="r_a984687e0cb1dfa69b33161177d270337"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="printf_8h.html#a984687e0cb1dfa69b33161177d270337">vsprintf</a> (char *out, const char *format, va_list args)</td></tr>
 <tr class="separator:a984687e0cb1dfa69b33161177d270337"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a014f72d1eb635d44f4547d6153c9afd1" id="r_a014f72d1eb635d44f4547d6153c9afd1"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="printf_8h.html#a014f72d1eb635d44f4547d6153c9afd1">sprintf</a> (char *out, const char *format,...)</td></tr>
@@ -174,84 +169,24 @@ Functions</h2></td></tr>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="printf_8c.html" title="Pared down printf implementation for embedded use.">printf.c</a> </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="printf_8h_source.html">printf.h</a>.</p>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a5bf270eda1fe4ed63535e31fab16433e" name="a5bf270eda1fe4ed63535e31fab16433e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5bf270eda1fe4ed63535e31fab16433e">&#9670;&#160;</a></span>PRINT_BUF_LEN</h2>
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a41cd624a0b9013e5cd7ab12430997b02" name="a41cd624a0b9013e5cd7ab12430997b02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41cd624a0b9013e5cd7ab12430997b02">&#9670;&#160;</a></span>printf_ttype_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define PRINT_BUF_LEN&#160;&#160;&#160;20</td>
+          <td class="memname">enum <a class="el" href="printf_8h.html#a41cd624a0b9013e5cd7ab12430997b02">printf_ttype_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a41cd624a0b9013e5cd7ab12430997b02a152776021aa6568da185d3bd929adce0" name="a41cd624a0b9013e5cd7ab12430997b02a152776021aa6568da185d3bd929adce0"></a>PRINT_TTYPE_STRING&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a41cd624a0b9013e5cd7ab12430997b02a1a3df25bb661458ee8e8414bff277d93" name="a41cd624a0b9013e5cd7ab12430997b02a1a3df25bb661458ee8e8414bff277d93"></a>PRINT_TTYPE_BYTEBUF&#160;</td><td class="fielddoc"></td></tr>
+</table>
 
-<p class="definition">Definition at line <a class="el" href="printf_8h_source.html#l00077">77</a> of file <a class="el" href="printf_8h_source.html">printf.h</a>.</p>
-
-</div>
-</div>
-<a id="a1da3a10ec628d326dddda42314bd42e0" name="a1da3a10ec628d326dddda42314bd42e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1da3a10ec628d326dddda42314bd42e0">&#9670;&#160;</a></span>PRINT_DEFAULT_FLOAT_PRECISION</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define PRINT_DEFAULT_FLOAT_PRECISION&#160;&#160;&#160;4</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="printf_8h_source.html#l00087">87</a> of file <a class="el" href="printf_8h_source.html">printf.h</a>.</p>
-
-</div>
-</div>
-<a id="ae56eb2aa7ca696a3fb7edf07b05661f4" name="ae56eb2aa7ca696a3fb7edf07b05661f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae56eb2aa7ca696a3fb7edf07b05661f4">&#9670;&#160;</a></span>PRINT_SUPPORT_FLOAT</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define PRINT_SUPPORT_FLOAT&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="printf_8h_source.html#l00083">83</a> of file <a class="el" href="printf_8h_source.html">printf.h</a>.</p>
-
-</div>
-</div>
-<a id="a66da8ccc08dfc80beb3b662cc0e70f79" name="a66da8ccc08dfc80beb3b662cc0e70f79"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a66da8ccc08dfc80beb3b662cc0e70f79">&#9670;&#160;</a></span>PRINT_TTYPE_BYTEBUF</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define PRINT_TTYPE_BYTEBUF&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="printf_8h_source.html#l00080">80</a> of file <a class="el" href="printf_8h_source.html">printf.h</a>.</p>
-
-</div>
-</div>
-<a id="afca46952b53abba1a6c1c0e8843dcde7" name="afca46952b53abba1a6c1c0e8843dcde7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afca46952b53abba1a6c1c0e8843dcde7">&#9670;&#160;</a></span>PRINT_TTYPE_STRING</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define PRINT_TTYPE_STRING&#160;&#160;&#160;0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="printf_8h_source.html#l00079">79</a> of file <a class="el" href="printf_8h_source.html">printf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="printf_8h_source.html#l00071">71</a> of file <a class="el" href="printf_8h_source.html">printf.h</a>.</p>
 
 </div>
 </div>
@@ -305,9 +240,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Number of characters printed. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="printf_8h_source.html#l00176">176</a> of file <a class="el" href="printf_8h_source.html">printf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="printf_8h_source.html#l00161">161</a> of file <a class="el" href="printf_8h_source.html">printf.h</a>.</p>
 
-<p class="reference">References <a class="el" href="printf_8h_source.html#l00164">vbprintf()</a>.</p>
+<p class="reference">References <a class="el" href="printf_8h_source.html#l00149">vbprintf()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -316,8 +251,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a5b328a8f32f082a641944307c97f9a34" name="a5b328a8f32f082a641944307c97f9a34"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5b328a8f32f082a641944307c97f9a34">&#9670;&#160;</a></span>print()</h2>
+<a id="aa0585acb8fbf31a90ffbf65ba543abe1" name="aa0585acb8fbf31a90ffbf65ba543abe1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0585acb8fbf31a90ffbf65ba543abe1">&#9670;&#160;</a></span>print()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -334,7 +269,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char&#160;</td>
+          <td class="paramtype">const <a class="el" href="printf_8h.html#a41cd624a0b9013e5cd7ab12430997b02">printf_ttype_t</a>&#160;</td>
           <td class="paramname"><em>ttype</em>, </td>
         </tr>
         <tr>
@@ -372,20 +307,20 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Number of characters printed. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="printf_8c_source.html#l00270">270</a> of file <a class="el" href="printf_8c_source.html">printf.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="printf_8c_source.html#l00272">272</a> of file <a class="el" href="printf_8c_source.html">printf.c</a>.</p>
 
-<p class="reference">References <a class="el" href="printf_8c_source.html#l00071">PAD_RIGHT</a>, <a class="el" href="printf_8c_source.html#l00072">PAD_ZERO</a>, <a class="el" href="printf_8h_source.html#l00087">PRINT_DEFAULT_FLOAT_PRECISION</a>, <a class="el" href="printf_8h_source.html#l00079">PRINT_TTYPE_STRING</a>, <a class="el" href="printf_8c_source.html#l00052">printchar()</a>, <a class="el" href="printf_8c_source.html#l00189">printfloat()</a>, <a class="el" href="printf_8c_source.html#l00152">printi()</a>, <a class="el" href="printf_8c_source.html#l00116">printl()</a>, and <a class="el" href="printf_8c_source.html#l00074">prints()</a>.</p>
+<p class="reference">References <a class="el" href="printf_8c_source.html#l00071">PAD_RIGHT</a>, <a class="el" href="printf_8c_source.html#l00072">PAD_ZERO</a>, <a class="el" href="config_8h_source.html#l00018">PRINT_DEFAULT_FLOAT_PRECISION</a>, <a class="el" href="printf_8h_source.html#l00072">PRINT_TTYPE_STRING</a>, <a class="el" href="printf_8c_source.html#l00052">printchar()</a>, <a class="el" href="printf_8c_source.html#l00189">printfloat()</a>, <a class="el" href="printf_8c_source.html#l00152">printi()</a>, <a class="el" href="printf_8c_source.html#l00116">printl()</a>, and <a class="el" href="printf_8c_source.html#l00074">prints()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="printf_8h_source.html#l00164">vbprintf()</a>, and <a class="el" href="printf_8h_source.html#l00122">vsprintf()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="printf_8h_source.html#l00149">vbprintf()</a>, and <a class="el" href="printf_8h_source.html#l00107">vsprintf()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="printf_8h_a5b328a8f32f082a641944307c97f9a34_cgraph.svg" width="100%" height="502"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="printf_8h_aa0585acb8fbf31a90ffbf65ba543abe1_cgraph.svg" width="100%" height="502"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="printf_8h_a5b328a8f32f082a641944307c97f9a34_icgraph.svg" width="298" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="printf_8h_aa0585acb8fbf31a90ffbf65ba543abe1_icgraph.svg" width="298" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -473,9 +408,9 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Number of characters printed. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="printf_8h_source.html#l00134">134</a> of file <a class="el" href="printf_8h_source.html">printf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="printf_8h_source.html#l00119">119</a> of file <a class="el" href="printf_8h_source.html">printf.h</a>.</p>
 
-<p class="reference">References <a class="el" href="printf_8h_source.html#l00122">vsprintf()</a>.</p>
+<p class="reference">References <a class="el" href="printf_8h_source.html#l00107">vsprintf()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -533,11 +468,11 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Number of characters printed. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="printf_8h_source.html#l00164">164</a> of file <a class="el" href="printf_8h_source.html">printf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="printf_8h_source.html#l00149">149</a> of file <a class="el" href="printf_8h_source.html">printf.h</a>.</p>
 
-<p class="reference">References <a class="el" href="printf_8c_source.html#l00270">print()</a>, and <a class="el" href="printf_8h_source.html#l00080">PRINT_TTYPE_BYTEBUF</a>.</p>
+<p class="reference">References <a class="el" href="printf_8c_source.html#l00272">print()</a>, and <a class="el" href="printf_8h_source.html#l00073">PRINT_TTYPE_BYTEBUF</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="printf_8h_source.html#l00176">bprintf()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="printf_8h_source.html#l00161">bprintf()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -601,11 +536,11 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Number of characters printed. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="printf_8h_source.html#l00122">122</a> of file <a class="el" href="printf_8h_source.html">printf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="printf_8h_source.html#l00107">107</a> of file <a class="el" href="printf_8h_source.html">printf.h</a>.</p>
 
-<p class="reference">References <a class="el" href="printf_8c_source.html#l00270">print()</a>, and <a class="el" href="printf_8h_source.html#l00079">PRINT_TTYPE_STRING</a>.</p>
+<p class="reference">References <a class="el" href="printf_8c_source.html#l00272">print()</a>, and <a class="el" href="printf_8h_source.html#l00072">PRINT_TTYPE_STRING</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="printf_8h_source.html#l00134">sprintf()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="printf_8h_source.html#l00119">sprintf()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -625,7 +560,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_012ec66c173e5cefcc171f0e37014eef.html">printf</a></li><li class="navelem"><a class="el" href="printf_8h.html">printf.h</a></li>
-    <li class="footer">Generated on Tue Jan 28 2025 10:13:09 for ebs-printf by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Tue Jan 28 2025 14:54:01 for ebs-printf by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
