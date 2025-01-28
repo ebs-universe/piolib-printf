@@ -46,7 +46,7 @@
 * #define putchar(c) outbyte(c) *	
 */
 int putchar ( int c ) {
-    return 0;
+    return 1;
 }
 
 static int printchar(void **target, const char ttype, int c)
@@ -99,11 +99,25 @@ static int prints(void **out, const char ttype, const char *string, int width, i
     return pc;
 }
 
+static inline uint8_t _write_number(char ** s, int u, int b, int letbase){
+    register uint8_t t, len = 0;
+    while (u) {
+        t = u % b;
+        if( t >= 10 )
+            t += letbase - '0' - 10;
+        (*s)--;
+        **s = t + '0';
+        u /= b;
+        len ++; 
+    }
+    return len;
+}
+
 static int printl(void **out, const char ttype, long i, int b, int sg, int width, int pad, int letbase)
 {
     char print_buf[PRINT_BUF_LEN];
-    register char *s;
-    register int t, neg = 0, pc = 0;
+    char *s;
+    register uint8_t neg = 0, pc = 0;
     register unsigned long u = i;
 
     if (i == 0) {
@@ -120,13 +134,7 @@ static int printl(void **out, const char ttype, long i, int b, int sg, int width
     s = print_buf + PRINT_BUF_LEN-1;
     *s = '\0';
 
-    while (u) {
-        t = u % b;
-        if( t >= 10 )
-            t += letbase - '0' - 10;
-        *--s = t + '0';
-        u /= b;
-    }
+    _write_number(&s, u, b, letbase);
 
     if (neg) {
         if( width && (pad & PAD_ZERO) ) {
@@ -144,8 +152,8 @@ static int printl(void **out, const char ttype, long i, int b, int sg, int width
 static int printi(void **out, const char ttype, int i, int b, int sg, int width, int pad, int letbase)
 {
     char print_buf[PRINT_BUF_LEN];
-    register char *s;
-    register int t, neg = 0, pc = 0;
+    char *s;
+    register uint8_t neg = 0, pc = 0;
     register unsigned int u = i;
 
     if (i == 0) {
@@ -162,13 +170,7 @@ static int printi(void **out, const char ttype, int i, int b, int sg, int width,
     s = print_buf + PRINT_BUF_LEN-1;
     *s = '\0';
 
-    while (u) {
-        t = u % b;
-        if( t >= 10 )
-            t += letbase - '0' - 10;
-        *--s = t + '0';
-        u /= b;
-    }
+    _write_number(&s, u, b, letbase);
 
     if (neg) {
         if( width && (pad & PAD_ZERO) ) {
@@ -183,9 +185,13 @@ static int printi(void **out, const char ttype, int i, int b, int sg, int width,
     return pc + prints (out, ttype, s, width, pad);
 }
 
+#if PRINT_SUPPORT_FLOAT
 static int printfloat(void **out, const char ttype, double f, int width, int pad, int precision) {
-    register int neg = 0, pc = 0;
-    int exponent = 0;
+    char print_buf[PRINT_BUF_LEN], localbuf[4];
+    char * s;
+    char * sl;
+    register uint8_t neg = 0, pc = 0, l8 = 0;
+    int8_t exponent = 0;
     double mantissa;
 
     if (f < 0) {
@@ -203,7 +209,7 @@ static int printfloat(void **out, const char ttype, double f, int width, int pad
             mantissa /= 10.0;
             exponent ++;
         }
-        while (mantissa >= 0.0  && mantissa < 1.0) {
+        while (mantissa < 1.0) {
             mantissa *= 10.0;
             exponent --;
         }
@@ -216,25 +222,50 @@ static int printfloat(void **out, const char ttype, double f, int width, int pad
     uint64_t digits = (uint64_t)mantissa;
     uint64_t fraction = (uint64_t)((mantissa - digits) * scale);
 
-    // Output the sign
-    if (neg){
-        pc += printchar(out, ttype, '-');
-    }
-    
-    // Output the integer part
-    pc += printi(out, ttype, digits, 10, 1, 0, 0, 'a');
-    
-    // Output the fractional part
-    pc += printchar(out, ttype, '.');
-    pc += printi(out, ttype, fraction, 10, 0, precision, PAD_ZERO, 'a');
-    
+    s = print_buf + PRINT_BUF_LEN-1;
+    *s = '\0';
+
     // Output the exponent if necessary
     if (exponent){
-        pc += printchar(out, ttype, 'e');
-        pc += printi(out, ttype, exponent, 10, 1, 0, 0, 'a');
+        if (exponent < 0){
+            l8 = 1;
+            exponent = -exponent;
+        }
+        _write_number(&s, exponent, 10, 'a');
+        if (l8) {
+            *--s = '-';
+        }
+        *--s = 'e';
     }
-    return pc;
+    
+    // Output the fractional part
+    sl = &localbuf[0];
+    l8 = printi((void **)&sl, PRINT_TTYPE_STRING, fraction, 10, 0, precision, PAD_ZERO, 'a');
+    while(l8){
+        l8 --;
+        *--s = localbuf[l8];
+    }
+    *--s = '.';
+    
+    // Output the integer part
+    if (digits) {
+        _write_number(&s, digits, 10, 'a');
+        if (neg) {
+            if( width && (pad & PAD_ZERO) ) {
+                pc += printchar (out, ttype, '-');
+                --width;
+            }
+            else {
+                *--s = '-';
+            }
+        }
+    } else {
+        *--s = '0';
+    }
+    
+    return pc + prints (out, ttype, s, width, pad);
 }
+#endif
 
 int print(void **out, const char ttype, const char *format, va_list args )
 {

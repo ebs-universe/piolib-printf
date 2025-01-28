@@ -117,9 +117,9 @@ extern int print(void **out, const char ttype, const char *format, va_list args 
  * @param args variable list from stdarg.h
  * @return Number of characters printed.
  */
-static inline int v_sprintf(char *out, const char *format, va_list args);
+static inline int vsprintf(char *out, const char *format, va_list args);
 
-static inline int v_sprintf(char *buf, const char *format, va_list args)
+static inline int vsprintf(char *buf, const char *format, va_list args)
 {        
     return print( (void **)&buf, PRINT_TTYPE_STRING, format, args );
 }
@@ -135,7 +135,7 @@ static inline int sprintf(char *out, const char *format, ...){
     uint8_t rval;
     va_list args;
     va_start( args, format );
-    rval = v_sprintf(out, format, args);
+    rval = vsprintf(out, format, args);
     va_end(args);
     return rval;
 }
